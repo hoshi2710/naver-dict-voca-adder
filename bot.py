@@ -2,11 +2,14 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import os
 import time
 
 dir = os.path.dirname(__file__)
-driver = webdriver.Chrome(dir+"/chromedriver")
+chrome_options = Options()
+chrome_options.add_argument("--headless") #창을 안띄우고 작업을 하도록 설정
+driver = webdriver.Chrome(chrome_options = chrome_options,executable_path = dir+"/chromedriver")
 
 def login(): #로그인
     id = input("아이디 : ") #아이디 입력
@@ -46,6 +49,7 @@ for voca in voca_list: #단어 추가 작업 시작
     find_and_add_voca(voca,voca_save_list) #단어를 추가하도록 함수에 요청
     print("추가완료 : " + voca + "["+str(i)+"/"+ str(len(voca_list))+"]") #진행률 표시
     i += 1
+driver.quit()
 print("============================")
 print("완료 되었습니다!")
 
