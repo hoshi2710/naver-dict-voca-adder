@@ -14,6 +14,7 @@ driver = webdriver.Chrome(chrome_options = chrome_options,executable_path = dir+
 def login(): #로그인
     id = input("아이디 : ") #아이디 입력
     pw = input("패스워드 : ") #패스워드 입력
+    print("로그인중...")
     driver.get("https://nid.naver.com/nidlogin.login") #로그인 창 로그인
     driver.execute_script("document.getElementsByName('id')[0].value='"+id+"'") #아이디 필드에 입력
     driver.execute_script("document.getElementsByName('pw')[0].value='"+pw+"'") #패스워드 필드에 입력
