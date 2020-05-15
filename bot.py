@@ -18,8 +18,8 @@ def login(): #로그인
     driver.get("https://nid.naver.com/nidlogin.login") #로그인 창 로그인
     driver.execute_script("document.getElementsByName('id')[0].value='"+id+"'") #아이디 필드에 입력
     driver.execute_script("document.getElementsByName('pw')[0].value='"+pw+"'") #패스워드 필드에 입력
-    login_btn = driver.find_element_by_css_selector('input[title="로그인"]') 
-    login_btn.click() #로그인 버튼 클릭
+    go = driver.find_elements_by_name('pw')[0] #Enter키를 누르기 위해 패스워드창에 포커싱
+    go.send_keys(Keys.ENTER) #엔터를 눌러 로그인
     time.sleep(2)
  
     
@@ -41,7 +41,7 @@ def find_and_add_voca(word, voca_name): #단어를 찾아 단어장에 추가하
     time.sleep(1)
 
 login()
-voca_list = "".join(open("voca.txt","r")).split('\n') #단어가 적힌 텍스트 파일 목록을 불러옴
+voca_list = "".join(open(dir+"/voca.txt","r")).split('\n') #단어가 적힌 텍스트 파일 목록을 불러옴
 voca_save_list = input("저장할 단어장 명을 입력하세요 : ") #저장할 단어장 명 입력
 input("voca.txt 파일에 있는 단어가 저장되오니 파일을 열어 저장할 단어들을 엔터키를 눌러 구별해 적어주기 바랍니다.\n모두 적었다면 엔터키를 누르면 시작됩니다.")
 print("====== 추 가 중 . . . ======")
